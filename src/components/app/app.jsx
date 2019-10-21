@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import PropTypes from 'prop-types';
 
-const App = ({gameTimes, errorCount}) => {
+const App = ({gameTimes, errorCount, handleClick}) => {
   return (
     <Fragment>
       <section className="welcome">
@@ -13,7 +13,7 @@ const App = ({gameTimes, errorCount}) => {
             height="83"
           />
         </div>
-        <button className="welcome__button">
+        <button className="welcome__button" onClick={handleClick}>
           <span className="visually-hidden">Начать игру</span>
         </button>
         <h2 className="welcome__rules-title">Правила игры</h2>
@@ -30,7 +30,8 @@ const App = ({gameTimes, errorCount}) => {
 
 App.propTypes = {
   gameTimes: PropTypes.number.isRequired,
-  errorCount: PropTypes.number.isRequired
+  errorCount: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired
 };
 
 export default App;
