@@ -19,7 +19,8 @@ describe(`ArtistQuestionScreen initial`, () => {
   let wrapper = shallow(<ArtistQuestionScreen {...mockData}/>);
 
   it(`calls onAnswer func with the correct data'`, () => {
-    wrapper.find(`.game__artist`).simulate(`change`);
-    expect(mockFunction).toHaveBeenCalledWith();
+    const button = wrapper.find(`form`);
+    button.simulate(`submit`, {mockFunction});
+    expect(mockFunction).toBeCalled();
   });
 });
