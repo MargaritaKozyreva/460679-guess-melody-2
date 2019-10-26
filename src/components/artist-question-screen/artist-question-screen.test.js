@@ -3,13 +3,17 @@ import ArtistQuestionScreen from "./artist-question-screen.jsx";
 import renderer from "react-test-renderer";
 
 describe(`ArtistQuestionScreen initial`, () => {
-  const onAnswer = jest.fn();
+
+  const formSubmitHandler = jest.fn();
+  const checkboxCheckedHandler = jest.fn();
+
   const mockProps = {
     question: {
       answers: []
     },
     screenIndex: 0,
-    onAnswer
+    formSubmitHandler,
+    checkboxCheckedHandler
   };
 
   it(`ArtistQuestionScreen renders correctly`, () => {

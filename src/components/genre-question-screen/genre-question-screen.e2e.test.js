@@ -23,11 +23,11 @@ describe(`GenreQuestionScreen initial`, () => {
     checkboxCheckedHandler
   };
 
-  let wrapper = shallow(<GenreQuestionScreen {...mockData}/>);
+  let wrapper = shallow(<GenreQuestionScreen {...mockData} {...defaultProps}/>);
 
-  it(`calls onAnswer func with the correct data'`, () => {
+  it(`calls onAnswer func with the correct data`, () => {
     const button = wrapper.find(`form`);
     button.simulate(`submit`, {formSubmitHandler});
-    expect(checkboxCheckedHandler(defaultProps)).toHaveBeenCalledTimes();
+    expect(checkboxCheckedHandler).toHaveBeenCalledWith(defaultProps);
   });
 });

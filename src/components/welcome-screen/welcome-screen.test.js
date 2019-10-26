@@ -7,7 +7,7 @@ describe(`WelcomeScreen initial`, () => {
   const onStartButtonClick = jest.fn();
 
   const mockProps = {
-    gameTimes: 7,
+    time: 7,
     errorCount: 3,
     onStartButtonClick
   };
