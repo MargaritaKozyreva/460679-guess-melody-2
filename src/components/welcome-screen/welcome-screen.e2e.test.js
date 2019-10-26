@@ -1,11 +1,11 @@
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import App from "./app";
+import WelcomeScreen from "./welcome-screen.jsx";
 
 Enzyme.configure({adapter: new Adapter()});
 
-describe(`App initial`, () => {
+describe(`WelcomeScreen initial`, () => {
   const handleClick = jest.fn();
 
   const mockProps = {
@@ -14,10 +14,10 @@ describe(`App initial`, () => {
     handleClick
   };
 
-  const app = shallow(<App {...mockProps} />);
+  const welcomeScreen = shallow(<WelcomeScreen {...mockProps} />);
 
-  it(`App clicking the button for start game`, () => {
-    const startButton = app.find(`button`);
+  it(`WelcomeScreen clicking the button for start game`, () => {
+    const startButton = welcomeScreen.find(`button`);
     startButton.simulate(`click`);
     expect(handleClick).toHaveBeenCalledTimes(1);
   });

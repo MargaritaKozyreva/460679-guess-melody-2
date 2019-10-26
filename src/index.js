@@ -1,14 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
+import {settings, questions} from "./mocks/questions";
 
-const emptyFunction = () => {};
-
-const init = () => {
-  ReactDOM.render(
-      <App gameTimes={7} errorCount={3} handleClick={emptyFunction} />,
-      document.querySelector(`#root`)
-  );
-};
-
-init();
+ReactDOM.render(
+    <App questions={questions} settings={settings} />,
+    document.querySelector(`#root`)
+);
