@@ -9,10 +9,6 @@ describe(`GenreQuestionScreen initial`, () => {
   const formSubmitHandler = jest.fn();
   const checkboxCheckedHandler = jest.fn();
 
-  const defaultProps = {
-    userAnswers: 0
-  };
-
   const mockData = {
     question: {
       answers: [],
@@ -23,11 +19,11 @@ describe(`GenreQuestionScreen initial`, () => {
     checkboxCheckedHandler
   };
 
-  let wrapper = shallow(<GenreQuestionScreen {...mockData} {...defaultProps}/>);
+  let wrapper = shallow(<GenreQuestionScreen {...mockData}/>);
 
   it(`calls onAnswer func with the correct data`, () => {
     const button = wrapper.find(`form`);
-    button.simulate(`submit`, {formSubmitHandler});
-    expect(checkboxCheckedHandler).toHaveBeenCalledWith(defaultProps);
+    button.simulate(`submit`, {checkboxCheckedHandler});
+    expect(checkboxCheckedHandler).toBeCalled();
   });
 });

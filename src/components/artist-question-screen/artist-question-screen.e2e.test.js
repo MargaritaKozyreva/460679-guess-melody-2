@@ -6,21 +6,23 @@ import ArtistQuestionScreen from "./artist-question-screen.jsx";
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`ArtistQuestionScreen initial`, () => {
-  const mockFunction = jest.fn();
+  const formSubmitHandler = jest.fn();
+  const checkboxCheckedHandler = jest.fn();
 
   const mockData = {
     question: {
       answers: []
     },
     screenIndex: 1,
-    onAnswer: mockFunction
+    formSubmitHandler,
+    checkboxCheckedHandler
   };
 
   let wrapper = shallow(<ArtistQuestionScreen {...mockData}/>);
 
   it(`calls onAnswer func with the correct data'`, () => {
     const button = wrapper.find(`form`);
-    button.simulate(`submit`, {mockFunction});
-    expect(mockFunction).toBeCalled();
+    button.simulate(`submit`, {checkboxCheckedHandler});
+    expect(checkboxCheckedHandler).toBeCalled();
   });
 });
