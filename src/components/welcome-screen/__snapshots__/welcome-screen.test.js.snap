@@ -39,7 +39,6 @@ exports[`WelcomeScreen initial WelcomeScreen renders correctly 1`] = `
   >
     <li>
       За 
-      7
        минут нужно ответить на все вопросы.
     </li>
     <li>

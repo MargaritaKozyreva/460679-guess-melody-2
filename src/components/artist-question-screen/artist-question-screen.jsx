@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 const ArtistQuestionScreen = ({
   question,
   screenIndex,
-  onAnswer
+  formSubmitHandler,
+  checkboxCheckedHandler
 }) => {
-
   const {answers} = question;
   return (
     <div id="game-artist">
@@ -62,16 +62,17 @@ const ArtistQuestionScreen = ({
               </div>
             </div>
           </div>
-          <form className="game__artist" onChange={onAnswer}>
+          <form className="game__artist" onChange={(e) => formSubmitHandler(e)}>
             {answers.map((elem, i) => {
               return (
-                <div key = {`${screenIndex}-answer-${i}`} className="artist">
+                <div key={`${screenIndex}-answer-${i}`} className="artist">
                   <input
                     className="artist__input visually-hidden"
                     type="radio"
                     name="answer"
                     defaultValue={`artist-${i}`}
                     id={`answer-${i}`}
+                    onChange={(e) => checkboxCheckedHandler(e)}
                   />
                   <label className="artist__name" htmlFor={`answer-${i}`}>
                     <img
@@ -96,7 +97,8 @@ ArtistQuestionScreen.propTypes = {
     answers: PropTypes.array.isRequired
   }),
   screenIndex: PropTypes.number.isRequired,
-  onAnswer: PropTypes.func.isRequired
+  formSubmitHandler: PropTypes.func.isRequired,
+  checkboxCheckedHandler: PropTypes.func.isRequired
 };
 
 export default ArtistQuestionScreen;

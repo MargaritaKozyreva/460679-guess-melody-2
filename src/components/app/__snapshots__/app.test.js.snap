@@ -39,6 +39,7 @@ exports[`App initial App renders correctly 1`] = `
   >
     <li>
       За 
+      1
        минут нужно ответить на все вопросы.
     </li>
     <li>

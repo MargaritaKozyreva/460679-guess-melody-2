@@ -3,10 +3,16 @@ import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export default class App extends PureComponent {
-  static getScreen(question, props, onUserAnswer) {
+  static getScreen(
+      question,
+      props,
+      onUserAnswer,
+      formSubmitHandler,
+      checkboxCheckedHandler
+  ) {
     if (question === -1) {
       const {gameTimes, errorCount} = props.settings;
 
@@ -28,7 +34,8 @@ export default class App extends PureComponent {
           <GenreQuestionScreen
             screenIndex={question}
             question={currentQuestion}
-            onAnswer={onUserAnswer}
+            formSubmitHandler={formSubmitHandler}
+            checkboxCheckedHandler={checkboxCheckedHandler}
           />
         );
 
@@ -37,7 +44,8 @@ export default class App extends PureComponent {
           <ArtistQuestionScreen
             screenIndex={question}
             question={currentQuestion}
-            onAnswer={onUserAnswer}
+            formSubmitHandler={formSubmitHandler}
+            checkboxCheckedHandler={checkboxCheckedHandler}
           />
         );
     }
@@ -49,27 +57,67 @@ export default class App extends PureComponent {
     super(props);
 
     this.state = {
-      question: -1
+      question: -1,
+      userAnswers: []
     };
   }
 
-  userAnswer(questions) {
+  formSubmitHandler(evt) {
+    evt.preventDefault();
+    this.userAnswer();
+  }
+
+  userAnswer() {
+    let questions = this.props.questions;
     this.setState((prevState) => {
       const nextIndex = prevState.question + 1;
       const isEnd = nextIndex >= questions.length;
-
       return {
-        question: !isEnd ? nextIndex : -1
+        question: !isEnd ? nextIndex : -1,
+        userAnswers: []
       };
     });
+  }
+
+  checkboxCheckedHandler(evt) {
+    this.changeStateHandler(evt.target.checked, evt.target.value);
+  }
+
+  changeStateHandler(add, answers) {
+    if (add) {
+      this.setState((prevState) => {
+        prevState.userAnswers.push(answers);
+        let result = prevState.userAnswers;
+        return {
+          userAnswers: result
+        };
+      });
+    } else {
+      this.setState((prevState) => {
+        const idx = prevState.userAnswers.indexOf(answers);
+
+        const onePart = prevState.userAnswers.slice(0, idx);
+        const twoPart = prevState.userAnswers.slice(idx, prevState.userAnswers.length - 1
+        );
+
+        const newArray = [...onePart, ...twoPart];
+        return {
+          userAnswers: newArray
+        };
+      });
+    }
   }
 
   render() {
     const {questions} = this.props;
     const {question} = this.state;
 
-    return App.getScreen(question, this.props, () =>
-      this.userAnswer(questions)
+    return App.getScreen(
+        question,
+        this.props,
+        () => this.userAnswer(questions),
+        this.formSubmitHandler.bind(this),
+        this.checkboxCheckedHandler.bind(this)
     );
   }
 }
@@ -78,6 +126,6 @@ App.propTypes = {
   questions: PropTypes.array.isRequired,
   settings: PropTypes.shape({
     gameTimes: PropTypes.number.isRequired,
-    errorCount: PropTypes.number.isRequired,
+    errorCount: PropTypes.number.isRequired
   })
 };

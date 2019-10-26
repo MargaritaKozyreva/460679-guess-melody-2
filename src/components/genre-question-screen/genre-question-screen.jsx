@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const GenreQuestionScreen = ({question, screenIndex, onAnswer}) => {
+const GenreQuestionScreen = ({question, screenIndex, formSubmitHandler, checkboxCheckedHandler}) => {
   const {answers, genre} = question;
 
   return (
@@ -33,10 +33,7 @@ const GenreQuestionScreen = ({question, screenIndex, onAnswer}) => {
         <h2 className="game__title">Выберите {genre} треки</h2>
         <form
           className="game__tracks"
-          onSubmit={(evt) => {
-            evt.preventDefault();
-            onAnswer();
-          }}
+          onSubmit={(e) => formSubmitHandler(e)}
         >
           {answers.map((it, i) => {
             return (
@@ -55,6 +52,7 @@ const GenreQuestionScreen = ({question, screenIndex, onAnswer}) => {
                     name="answer"
                     value={`answer-${i}`}
                     id={`answer-${i}`}
+                    onChange={(e) =>checkboxCheckedHandler(e)}
                   />
                   <label className="game__check" htmlFor={`answer-${i}`}>
                     Отметить
@@ -78,7 +76,8 @@ GenreQuestionScreen.propTypes = {
     genre: PropTypes.string
   }),
   screenIndex: PropTypes.number.isRequired,
-  onAnswer: PropTypes.func.isRequired
+  formSubmitHandler: PropTypes.func.isRequired,
+  checkboxCheckedHandler: PropTypes.func.isRequired
 };
 
 export default GenreQuestionScreen;

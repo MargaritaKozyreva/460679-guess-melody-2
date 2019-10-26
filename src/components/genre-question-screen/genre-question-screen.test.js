@@ -4,13 +4,17 @@ import renderer from "react-test-renderer";
 
 describe(`GenreQuestionScreen initial`, () => {
 
-  const onAnswer = jest.fn();
+  const formSubmitHandler = jest.fn();
+  const checkboxCheckedHandler = jest.fn();
+
   const mockProps = {
     question: {
-      answers: []
+      answers: [],
+      genre: `test`
     },
     screenIndex: 0,
-    onAnswer,
+    formSubmitHandler,
+    checkboxCheckedHandler
   };
 
   it(`GenreQuestionScreen renders correctly`, () => {

@@ -61,6 +61,7 @@ exports[`GenreQuestionScreen initial GenreQuestionScreen renders correctly 1`] =
       className="game__title"
     >
       Выберите 
+      test
        треки
     </h2>
     <form

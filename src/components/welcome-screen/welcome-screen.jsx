@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import PropTypes from 'prop-types';
 
-const WelcomeScreen = ({gameTimes, errorCount, onStartButtonClick}) => {
+const WelcomeScreen = ({time, errorCount, onStartButtonClick}) => {
   return (
     <Fragment>
       <section className="welcome">
@@ -19,7 +19,7 @@ const WelcomeScreen = ({gameTimes, errorCount, onStartButtonClick}) => {
         <h2 className="welcome__rules-title">Правила игры</h2>
         <p className="welcome__text">Правила просты:</p>
         <ul className="welcome__rules-list">
-          <li>За {gameTimes} минут нужно ответить на все вопросы.</li>
+          <li>За {time} минут нужно ответить на все вопросы.</li>
           <li>Можно допустить {errorCount} ошибки.</li>
         </ul>
         <p className="welcome__text">Удачи!</p>
@@ -29,7 +29,7 @@ const WelcomeScreen = ({gameTimes, errorCount, onStartButtonClick}) => {
 };
 
 WelcomeScreen.propTypes = {
-  gameTimes: PropTypes.number,
+  time: PropTypes.number,
   errorCount: PropTypes.number,
   onStartButtonClick: PropTypes.func
 };
