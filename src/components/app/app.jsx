@@ -63,6 +63,7 @@ export default class App extends PureComponent {
   }
 
   formSubmitHandler(evt) {
+
     evt.preventDefault();
     this.userAnswer();
   }
@@ -70,8 +71,9 @@ export default class App extends PureComponent {
   userAnswer() {
     let questions = this.props.questions;
     this.setState((prevState) => {
+
       const nextIndex = prevState.question + 1;
-      const isEnd = nextIndex >= questions.length;
+      const isEnd = nextIndex >= questions.length - 1;
       return {
         question: !isEnd ? nextIndex : -1,
         userAnswers: []
@@ -80,11 +82,15 @@ export default class App extends PureComponent {
   }
 
   checkboxCheckedHandler(evt) {
-    this.changeStateHandler(evt.target.checked, evt.target.value);
+
+    const isChecked = evt.target.checked;
+    const checkboxValue = evt.target.value;
+
+    this.changeStateHandler(isChecked, checkboxValue);
   }
 
-  changeStateHandler(add, answers) {
-    if (add) {
+  changeStateHandler(isChecked, answers) {
+    if (isChecked) {
       this.setState((prevState) => {
         prevState.userAnswers.push(answers);
         let result = prevState.userAnswers;
@@ -106,6 +112,7 @@ export default class App extends PureComponent {
         };
       });
     }
+    return null;
   }
 
   render() {

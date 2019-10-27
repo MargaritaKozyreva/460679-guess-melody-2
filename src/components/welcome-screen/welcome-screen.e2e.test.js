@@ -6,12 +6,12 @@ import WelcomeScreen from "./welcome-screen.jsx";
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`WelcomeScreen initial`, () => {
-  const handleClick = jest.fn();
+  const onStartButtonClick = jest.fn();
 
   const mockProps = {
-    gameTimes: 7,
+    time: 7,
     errorCount: 3,
-    handleClick
+    onStartButtonClick
   };
 
   const welcomeScreen = shallow(<WelcomeScreen {...mockProps} />);
@@ -19,6 +19,6 @@ describe(`WelcomeScreen initial`, () => {
   it(`WelcomeScreen clicking the button for start game`, () => {
     const startButton = welcomeScreen.find(`button`);
     startButton.simulate(`click`);
-    expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(onStartButtonClick).toHaveBeenCalledTimes(1);
   });
 });

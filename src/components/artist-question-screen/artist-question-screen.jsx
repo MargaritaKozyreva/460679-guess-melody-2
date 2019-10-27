@@ -9,6 +9,7 @@ const ArtistQuestionScreen = ({
   checkboxCheckedHandler
 }) => {
   const {answers} = question;
+
   return (
     <div id="game-artist">
       <section className="game game--artist">
@@ -62,7 +63,7 @@ const ArtistQuestionScreen = ({
               </div>
             </div>
           </div>
-          <form className="game__artist" onChange={(e) => formSubmitHandler(e)}>
+          <form className="game__artist" onChange={formSubmitHandler}>
             {answers.map((elem, i) => {
               return (
                 <div key={`${screenIndex}-answer-${i}`} className="artist">
@@ -72,7 +73,7 @@ const ArtistQuestionScreen = ({
                     name="answer"
                     defaultValue={`artist-${i}`}
                     id={`answer-${i}`}
-                    onChange={(e) => checkboxCheckedHandler(e)}
+                    onChange={checkboxCheckedHandler}
                   />
                   <label className="artist__name" htmlFor={`answer-${i}`}>
                     <img

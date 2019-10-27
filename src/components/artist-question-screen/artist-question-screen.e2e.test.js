@@ -11,18 +11,39 @@ describe(`ArtistQuestionScreen initial`, () => {
 
   const mockData = {
     question: {
-      answers: []
+      answers: [
+        {
+          picture: `http://placehold.it/134x134`,
+          artist: `John Snow`
+        },
+        {
+          picture: `http://placehold.it/134x134`,
+          artist: `Jack Daniels`
+        },
+        {
+          picture: `http://placehold.it/134x134`,
+          artist: `Jim Beam`
+        }
+      ]
     },
-    screenIndex: 1,
+    screenIndex: 0,
     formSubmitHandler,
     checkboxCheckedHandler
   };
 
   let wrapper = shallow(<ArtistQuestionScreen {...mockData}/>);
 
-  it(`calls onAnswer func with the correct data'`, () => {
-    const button = wrapper.find(`form`);
-    button.simulate(`submit`, {checkboxCheckedHandler});
-    expect(checkboxCheckedHandler).toBeCalled();
+  it(`calls onAnswer func with the correct data`, () => {
+    const input = wrapper.find(`input`).at(0);
+    input.simulate(`change`, {
+      target: {
+        value: `artist-0`,
+        checked: true
+      }
+    });
+    expect(checkboxCheckedHandler).toHaveBeenCalledWith({target: {
+      value: `artist-0`,
+      checked: true
+    }});
   });
 });

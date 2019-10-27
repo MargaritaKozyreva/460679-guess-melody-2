@@ -29,9 +29,9 @@ const WelcomeScreen = ({time, errorCount, onStartButtonClick}) => {
 };
 
 WelcomeScreen.propTypes = {
-  time: PropTypes.number,
-  errorCount: PropTypes.number,
-  onStartButtonClick: PropTypes.func
+  time: PropTypes.number.isRequired,
+  errorCount: PropTypes.number.isRequired,
+  onStartButtonClick: PropTypes.func.isRequired
 };
 
 export default WelcomeScreen;

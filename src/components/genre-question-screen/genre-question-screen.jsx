@@ -33,7 +33,7 @@ const GenreQuestionScreen = ({question, screenIndex, formSubmitHandler, checkbox
         <h2 className="game__title">Выберите {genre} треки</h2>
         <form
           className="game__tracks"
-          onSubmit={(e) => formSubmitHandler(e)}
+          onSubmit={formSubmitHandler}
         >
           {answers.map((it, i) => {
             return (
@@ -52,7 +52,7 @@ const GenreQuestionScreen = ({question, screenIndex, formSubmitHandler, checkbox
                     name="answer"
                     value={`answer-${i}`}
                     id={`answer-${i}`}
-                    onChange={(e) =>checkboxCheckedHandler(e)}
+                    onChange={checkboxCheckedHandler}
                   />
                   <label className="game__check" htmlFor={`answer-${i}`}>
                     Отметить

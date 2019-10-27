@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
@@ -11,7 +12,24 @@ describe(`GenreQuestionScreen initial`, () => {
 
   const mockData = {
     question: {
-      answers: [],
+      answers: [
+        {
+          src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+          genre: `rock`
+        },
+        {
+          src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+          genre: `pop`
+        },
+        {
+          src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+          genre: `jazz`
+        },
+        {
+          src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+          genre: `rock`
+        }
+      ],
       genre: `test`
     },
     screenIndex: 1,
@@ -22,8 +40,15 @@ describe(`GenreQuestionScreen initial`, () => {
   let wrapper = shallow(<GenreQuestionScreen {...mockData}/>);
 
   it(`calls onAnswer func with the correct data`, () => {
-    const button = wrapper.find(`form`);
-    button.simulate(`submit`, {checkboxCheckedHandler});
-    expect(checkboxCheckedHandler).toBeCalled();
+    const input = wrapper.find(`input`).at(0);
+    input.simulate(`change`, {
+      target: {
+        value: `answer-0`,
+        checked: true
+      }
+    });
+    expect(checkboxCheckedHandler).toHaveBeenCalledWith({
+      target: {checked: true, value: `answer-0`}
+    });
   });
 });

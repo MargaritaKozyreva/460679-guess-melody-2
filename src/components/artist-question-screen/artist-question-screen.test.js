@@ -9,7 +9,20 @@ describe(`ArtistQuestionScreen initial`, () => {
 
   const mockProps = {
     question: {
-      answers: []
+      answers: [
+        {
+          picture: `http://placehold.it/134x134`,
+          artist: `John Snow`
+        },
+        {
+          picture: `http://placehold.it/134x134`,
+          artist: `Jack Daniels`
+        },
+        {
+          picture: `http://placehold.it/134x134`,
+          artist: `Jim Beam`
+        }
+      ]
     },
     screenIndex: 0,
     formSubmitHandler,
