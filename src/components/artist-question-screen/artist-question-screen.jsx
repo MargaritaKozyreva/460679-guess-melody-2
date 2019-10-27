@@ -70,8 +70,8 @@ const ArtistQuestionScreen = ({
                   <input
                     className="artist__input visually-hidden"
                     type="radio"
-                    name="answer"
-                    defaultValue={`artist-${i}`}
+                    name={`${question.type}-${screenIndex}`}
+                    defaultValue={`answer-${i}`}
                     id={`answer-${i}`}
                     onChange={checkboxCheckedHandler}
                   />
@@ -95,7 +95,8 @@ const ArtistQuestionScreen = ({
 
 ArtistQuestionScreen.propTypes = {
   question: PropTypes.shape({
-    answers: PropTypes.array.isRequired
+    answers: PropTypes.array.isRequired,
+    type: PropTypes.string
   }),
   screenIndex: PropTypes.number.isRequired,
   formSubmitHandler: PropTypes.func.isRequired,

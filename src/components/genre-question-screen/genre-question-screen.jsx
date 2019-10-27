@@ -49,7 +49,7 @@ const GenreQuestionScreen = ({question, screenIndex, formSubmitHandler, checkbox
                   <input
                     className="game__input visually-hidden"
                     type="checkbox"
-                    name="answer"
+                    name={`${question.type}-${screenIndex}`}
                     value={`answer-${i}`}
                     id={`answer-${i}`}
                     onChange={checkboxCheckedHandler}
@@ -73,7 +73,8 @@ const GenreQuestionScreen = ({question, screenIndex, formSubmitHandler, checkbox
 GenreQuestionScreen.propTypes = {
   question: PropTypes.shape({
     answers: PropTypes.array.isRequired,
-    genre: PropTypes.string
+    genre: PropTypes.string,
+    type: PropTypes.string
   }),
   screenIndex: PropTypes.number.isRequired,
   formSubmitHandler: PropTypes.func.isRequired,

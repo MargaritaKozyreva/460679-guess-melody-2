@@ -112,9 +112,9 @@ exports[`ArtistQuestionScreen initial ArtistQuestionScreen renders correctly 1`]
         >
           <input
             className="artist__input visually-hidden"
-            defaultValue="artist-0"
+            defaultValue="answer-0"
             id="answer-0"
-            name="answer"
+            name="undefined-0"
             onChange={[MockFunction]}
             type="radio"
           />
@@ -135,9 +135,9 @@ exports[`ArtistQuestionScreen initial ArtistQuestionScreen renders correctly 1`]
         >
           <input
             className="artist__input visually-hidden"
-            defaultValue="artist-1"
+            defaultValue="answer-1"
             id="answer-1"
-            name="answer"
+            name="undefined-0"
             onChange={[MockFunction]}
             type="radio"
           />
@@ -158,9 +158,9 @@ exports[`ArtistQuestionScreen initial ArtistQuestionScreen renders correctly 1`]
         >
           <input
             className="artist__input visually-hidden"
-            defaultValue="artist-2"
+            defaultValue="answer-2"
             id="answer-2"
-            name="answer"
+            name="undefined-0"
             onChange={[MockFunction]}
             type="radio"
           />

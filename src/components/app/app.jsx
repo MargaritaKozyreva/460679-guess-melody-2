@@ -83,19 +83,22 @@ export default class App extends PureComponent {
 
   checkboxCheckedHandler(evt) {
 
-    const isChecked = evt.target.checked;
-    const checkboxValue = evt.target.value;
+    const target = evt.target;
 
-    this.changeStateHandler(isChecked, checkboxValue);
+    const isChecked = target.checked;
+    const checkboxValue = target.value;
+    const checkboxName = target.name;
+
+    this.changeStateHandler(isChecked, checkboxValue, checkboxName);
   }
 
-  changeStateHandler(isChecked, answers) {
+  changeStateHandler(isChecked, answers, checkboxName) {
     if (isChecked) {
       this.setState((prevState) => {
         prevState.userAnswers.push(answers);
         let result = prevState.userAnswers;
         return {
-          userAnswers: result
+          [checkboxName]: result
         };
       });
     } else {
@@ -108,7 +111,7 @@ export default class App extends PureComponent {
 
         const newArray = [...onePart, ...twoPart];
         return {
-          userAnswers: newArray
+          [checkboxName]: newArray
         };
       });
     }
