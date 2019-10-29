@@ -4,12 +4,12 @@ import renderer from "react-test-renderer";
 
 describe(`App initial`, () => {
 
-  const handleClick = jest.fn();
-
   const mockProps = {
-    gameTimes: 7,
-    errorCount: 3,
-    handleClick
+    questions: [],
+    settings: {
+      gameTimes: 1,
+      errorCount: 1,
+    },
   };
 
   it(`App renders correctly`, () => {

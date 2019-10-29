@@ -1,38 +1,141 @@
-import React, {Fragment} from "react";
-import PropTypes from 'prop-types';
+import React, {PureComponent} from "react";
+import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
+import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
+import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 
-const App = ({gameTimes, errorCount, handleClick}) => {
-  return (
-    <Fragment>
-      <section className="welcome">
-        <div className="welcome__logo">
-          <img
-            src="img/melody-logo.png"
-            alt="Угадай мелодию"
-            width="186"
-            height="83"
+import PropTypes from "prop-types";
+
+export default class App extends PureComponent {
+  static getScreen(
+      question,
+      props,
+      onUserAnswer,
+      formSubmitHandler,
+      checkboxCheckedHandler
+  ) {
+    if (question === -1) {
+      const {gameTimes, errorCount} = props.settings;
+
+      return (
+        <WelcomeScreen
+          time={gameTimes}
+          errorCount={errorCount}
+          onStartButtonClick={onUserAnswer}
+        />
+      );
+    }
+
+    const {questions} = props;
+    const currentQuestion = questions[question];
+
+    switch (currentQuestion.type) {
+      case `genre`:
+        return (
+          <GenreQuestionScreen
+            screenIndex={question}
+            question={currentQuestion}
+            formSubmitHandler={formSubmitHandler}
+            checkboxCheckedHandler={checkboxCheckedHandler}
           />
-        </div>
-        <button className="welcome__button" onClick={handleClick}>
-          <span className="visually-hidden">Начать игру</span>
-        </button>
-        <h2 className="welcome__rules-title">Правила игры</h2>
-        <p className="welcome__text">Правила просты:</p>
-        <ul className="welcome__rules-list">
-          <li>За {gameTimes} минут нужно ответить на все вопросы.</li>
-          <li>Можно допустить {errorCount} ошибки.</li>
-        </ul>
-        <p className="welcome__text">Удачи!</p>
-      </section>
-    </Fragment>
-  );
-};
+        );
+
+      case `artist`:
+        return (
+          <ArtistQuestionScreen
+            screenIndex={question}
+            question={currentQuestion}
+            formSubmitHandler={formSubmitHandler}
+            checkboxCheckedHandler={checkboxCheckedHandler}
+          />
+        );
+    }
+
+    return null;
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      question: -1,
+      userAnswers: []
+    };
+  }
+
+  formSubmitHandler(evt) {
+
+    evt.preventDefault();
+    this.userAnswer();
+  }
+
+  userAnswer() {
+    let questions = this.props.questions;
+    this.setState((prevState) => {
+
+      const nextIndex = prevState.question + 1;
+      const isEnd = nextIndex >= questions.length - 1;
+      return {
+        question: !isEnd ? nextIndex : -1,
+        userAnswers: []
+      };
+    });
+  }
+
+  checkboxCheckedHandler(evt) {
+
+    const target = evt.target;
+
+    const isChecked = target.checked;
+    const checkboxValue = target.value;
+    const checkboxName = target.name;
+
+    this.changeStateHandler(isChecked, checkboxValue, checkboxName);
+  }
+
+  changeStateHandler(isChecked, answers, checkboxName) {
+    if (isChecked) {
+      this.setState((prevState) => {
+        prevState.userAnswers.push(answers);
+        let result = prevState.userAnswers;
+        return {
+          [checkboxName]: result
+        };
+      });
+    } else {
+      this.setState((prevState) => {
+        const idx = prevState.userAnswers.indexOf(answers);
+
+        const onePart = prevState.userAnswers.slice(0, idx);
+        const twoPart = prevState.userAnswers.slice(idx, prevState.userAnswers.length - 1
+        );
+
+        const newArray = [...onePart, ...twoPart];
+        return {
+          [checkboxName]: newArray
+        };
+      });
+    }
+    return null;
+  }
+
+  render() {
+    const {questions} = this.props;
+    const {question} = this.state;
+
+    return App.getScreen(
+        question,
+        this.props,
+        () => this.userAnswer(questions),
+        this.formSubmitHandler.bind(this),
+        this.checkboxCheckedHandler.bind(this)
+    );
+  }
+}
 
 App.propTypes = {
-  gameTimes: PropTypes.number.isRequired,
-  errorCount: PropTypes.number.isRequired,
-  handleClick: PropTypes.func.isRequired
+  questions: PropTypes.array.isRequired,
+  settings: PropTypes.shape({
+    gameTimes: PropTypes.number.isRequired,
+    errorCount: PropTypes.number.isRequired
+  })
 };
-
-export default App;
-
