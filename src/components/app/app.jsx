@@ -63,7 +63,6 @@ export default class App extends PureComponent {
   }
 
   formSubmitHandler(evt) {
-
     evt.preventDefault();
     this.userAnswer();
   }
@@ -73,7 +72,7 @@ export default class App extends PureComponent {
     this.setState((prevState) => {
 
       const nextIndex = prevState.question + 1;
-      const isEnd = nextIndex >= questions.length - 1;
+      const isEnd = nextIndex >= questions.length;
       return {
         question: !isEnd ? nextIndex : -1,
         userAnswers: []

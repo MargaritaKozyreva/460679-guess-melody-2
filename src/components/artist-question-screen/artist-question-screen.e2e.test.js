@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import ArtistQuestionScreen from "./artist-question-screen.jsx";
 
@@ -11,6 +11,11 @@ describe(`ArtistQuestionScreen initial`, () => {
 
   const mockData = {
     question: {
+      type: `artist`,
+      song: {
+        artist: `Queen`,
+        src: `https://upload.wikimedia.org/wikipedia/en/transcoded/2/2a/Queen_-_News_Of_The_World_-_We_Will_Rock_You.ogg/Queen_-_News_Of_The_World_-_We_Will_Rock_You.ogg.mp3`
+      },
       answers: [
         {
           picture: `http://placehold.it/134x134`,
@@ -31,7 +36,7 @@ describe(`ArtistQuestionScreen initial`, () => {
     checkboxCheckedHandler
   };
 
-  let wrapper = shallow(<ArtistQuestionScreen {...mockData}/>);
+  let wrapper = mount(<ArtistQuestionScreen {...mockData}/>);
 
   it(`calls onAnswer func with the correct data`, () => {
     const input = wrapper.find(`input`).at(0);
