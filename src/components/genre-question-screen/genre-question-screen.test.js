@@ -2,10 +2,12 @@ import React from "React";
 import GenreQuestionScreen from "./genre-question-screen.jsx";
 import renderer from "react-test-renderer";
 
-describe(`GenreQuestionScreen initialllll`, () => {
+describe(`GenreQuestionScreen initiall`, () => {
 
   const formSubmitHandler = jest.fn();
   const checkboxCheckedHandler = jest.fn();
+
+  let isLoading = true;
 
   const mockProps = {
     question: {
@@ -35,7 +37,19 @@ describe(`GenreQuestionScreen initialllll`, () => {
   };
 
   it(`GenreQuestionScreen renders correctly`, () => {
-    const tree = renderer.create(<GenreQuestionScreen {...mockProps}/>).toJSON();
+    const tree = renderer.create(<GenreQuestionScreen {...mockProps}/>, {
+      createNodeMock: (element) => {
+        if (element.type === `audio`) {
+          return {
+            oncanplaythrough: () => {
+              isLoading = false;
+            }
+          };
+        }
+        return null;
+      }
+    }).toJSON();
+    expect(isLoading).toBe(true);
     expect(tree).toMatchSnapshot();
   });
 });

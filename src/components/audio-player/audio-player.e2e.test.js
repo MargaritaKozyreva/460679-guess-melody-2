@@ -14,22 +14,25 @@ describe(`Testing AudioPlayer`, () => {
     src: `https://upload.wikimedia.org/wikipedia/track.ogg`
   };
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   let wrapper = mount(<AudioPlayer {...mockData}/>);
 
-  it(`Check correct changing state when click on button "play"`, () => {
-
-    wrapper.state({isPlaying: false});
-
+  it(`"true": Check correct changing state when click on button "play"`, () => {
+    wrapper.setState({isPlaying: false});
     const button = wrapper.find(`.track__button`);
     button.simulate(`click`);
-    expect(onPlayButtonClick).toHaveBeenCalled();
+    const isPlaying = wrapper.state().isPlaying;
+    expect(isPlaying).toEqual(true);
+  });
+
+  it(`"false" : Check correct changing state when click on button "play"`, () => {
     wrapper.setState({isPlaying: true});
-    wrapper = wrapper.update();
-    expect(`isPlaying` in wrapper.state()).toEqual(true);
+    const button = wrapper.find(`.track__button`);
     button.simulate(`click`);
-    expect(onPlayButtonClick).toHaveBeenCalled();
-    wrapper.setState({isPlaying: false});
-    wrapper = wrapper.update();
-    expect(`isPlaying` in wrapper.state()).toEqual(false);
+    const isPlaying = wrapper.state().isPlaying;
+    expect(isPlaying).toEqual(false);
   });
 });

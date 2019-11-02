@@ -32,7 +32,7 @@ export default class AudioPlayer extends PureComponent {
           onClick={this._onPlayButtonClick}
         />
         <div className="track__status">
-          <audio ref={this._audioRef} />
+          <audio ref={this._audioRef} src={this.props.src}/>
         </div>
       </Fragment>
     );
@@ -40,8 +40,6 @@ export default class AudioPlayer extends PureComponent {
 
   componentDidMount() {
     let audio = this._audioRef.current;
-
-    audio.src = this.props.src;
 
     audio.oncanplaythrough = () =>
       this.setState({
@@ -85,7 +83,6 @@ export default class AudioPlayer extends PureComponent {
     audio.onplay = null;
     audio.onpause = null;
     audio.ontimeupdate = null;
-    audio.src = ``;
   }
 
   _onPlayButtonClick() {
@@ -98,5 +95,5 @@ export default class AudioPlayer extends PureComponent {
 AudioPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
-  src: PropTypes.string
+  src: PropTypes.string.isRequired
 };

@@ -5,7 +5,7 @@ import ArtistQuestionScreen from "./artist-question-screen.jsx";
 
 Enzyme.configure({adapter: new Adapter()});
 
-describe(`ArtistQuestionScreen initial`, () => {
+describe(`e2e: ArtistQuestionScreen initial`, () => {
   const formSubmitHandler = jest.fn();
   const checkboxCheckedHandler = jest.fn();
 

@@ -2,10 +2,11 @@ import React from "React";
 import ArtistQuestionScreen from "./artist-question-screen.jsx";
 import renderer from "react-test-renderer";
 
-describe(`ArtistQuestionScreen initialll`, () => {
-
+describe(`snapshot: ArtistQuestionScreen initiall`, () => {
   const formSubmitHandler = jest.fn();
   const checkboxCheckedHandler = jest.fn();
+
+  let isLoading = true;
 
   const mockProps = {
     question: {
@@ -35,7 +36,21 @@ describe(`ArtistQuestionScreen initialll`, () => {
   };
 
   it(`ArtistQuestionScreen renders correctly`, () => {
-    const tree = renderer.create(<ArtistQuestionScreen {...mockProps}/>).toJSON();
+    const tree = renderer
+      .create(<ArtistQuestionScreen {...mockProps} />, {
+        createNodeMock: (element) => {
+          if (element.type === `audio`) {
+            return {
+              oncanplaythrough: () => {
+                isLoading = false;
+              }
+            };
+          }
+          return null;
+        }
+      })
+      .toJSON();
+    expect(isLoading).toBe(true);
     expect(tree).toMatchSnapshot();
   });
 });

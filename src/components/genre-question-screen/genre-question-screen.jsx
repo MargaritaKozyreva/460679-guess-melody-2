@@ -92,8 +92,8 @@ export default class GenreQuestionScreen extends PureComponent {
 GenreQuestionScreen.propTypes = {
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(PropTypes.shape({
-      src: PropTypes.string,
-      genre: PropTypes.string,
+      src: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
     })).isRequired,
     genre: PropTypes.string,
     type: PropTypes.string
