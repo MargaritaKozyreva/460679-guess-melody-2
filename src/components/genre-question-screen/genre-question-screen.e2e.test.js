@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import GenreQuestionScreen from "./genre-question-screen.jsx";
 
@@ -37,7 +37,7 @@ describe(`GenreQuestionScreen initial`, () => {
     checkboxCheckedHandler
   };
 
-  let wrapper = shallow(<GenreQuestionScreen {...mockData}/>);
+  let wrapper = mount(<GenreQuestionScreen {...mockData}/>);
 
   it(`calls onAnswer func with the correct data`, () => {
     const input = wrapper.find(`input`).at(0);

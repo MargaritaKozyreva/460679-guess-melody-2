@@ -9,19 +9,19 @@ export let questions = [
     genre: `rock`,
     answers: [
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/ru/transcoded/d/d1/Rammstein_-_Keine_Lust.ogg/Rammstein_-_Keine_Lust.ogg.mp3`,
         genre: `rock`
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/en/transcoded/4/40/Madonna_-_You%27ll_See.ogg/Madonna_-_You%27ll_See.ogg.mp3`,
         genre: `pop`
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/en/transcoded/8/89/My_Kind_Of_Town_clip.ogg/My_Kind_Of_Town_clip.ogg.mp3`,
         genre: `jazz`
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/en/transcoded/7/7d/ACDC_Itsalongway.ogg/ACDC_Itsalongway.ogg.mp3`,
         genre: `rock`
       }
     ]
@@ -31,19 +31,19 @@ export let questions = [
     genre: `folk`,
     answers: [
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/en/transcoded/7/7d/ACDC_Itsalongway.ogg/ACDC_Itsalongway.ogg.mp3`,
         genre: `rock`
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/en/transcoded/4/40/Madonna_-_You%27ll_See.ogg/Madonna_-_You%27ll_See.ogg.mp3`,
         genre: `pop`
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/en/transcoded/8/89/My_Kind_Of_Town_clip.ogg/My_Kind_Of_Town_clip.ogg.mp3`,
         genre: `jazz`
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/en/transcoded/e/e7/David_Byrne_and_Brian_Eno_-_Life_Is_Long.ogg/David_Byrne_and_Brian_Eno_-_Life_Is_Long.ogg.mp3`,
         genre: `folk`
       }
     ]
@@ -51,42 +51,42 @@ export let questions = [
   {
     type: `artist`,
     song: {
-      artist: `Jim Beam`,
-      src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`
+      artist: `Michael Jackson`,
+      src: `https://upload.wikimedia.org/wikipedia/en/transcoded/b/b0/Michael_Jackson_-_They_Don%27t_Care_About_Us.ogg/Michael_Jackson_-_They_Don%27t_Care_About_Us.ogg.mp3`
     },
     answers: [
       {
         picture: `http://placehold.it/134x134`,
-        artist: `John Snow`
+        artist: `Michael Jackson`
       },
       {
         picture: `http://placehold.it/134x134`,
-        artist: `Jack Daniels`
+        artist: `Bruno Mars`
       },
       {
         picture: `http://placehold.it/134x134`,
-        artist: `Jim Beam`
+        artist: `Enrique Iglesias`
       }
     ]
   },
   {
     type: `artist`,
     song: {
-      artist: `Jack Daniels`,
-      src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`
+      artist: `Queen`,
+      src: `https://upload.wikimedia.org/wikipedia/en/transcoded/2/2a/Queen_-_News_Of_The_World_-_We_Will_Rock_You.ogg/Queen_-_News_Of_The_World_-_We_Will_Rock_You.ogg.mp3`
     },
     answers: [
       {
         picture: `http://placehold.it/134x134`,
-        artist: `John Snow`
+        artist: `Justin Bieber`
       },
       {
         picture: `http://placehold.it/134x134`,
-        artist: `Jack Daniels`
+        artist: `Queen`
       },
       {
         picture: `http://placehold.it/134x134`,
-        artist: `Jim Beam`
+        artist: `Nirvana`
       }
     ]
   }

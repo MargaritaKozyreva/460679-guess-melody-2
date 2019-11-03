@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ArtistQuestionScreen initial ArtistQuestionScreen renders correctly 1`] = `
+exports[`snapshot: ArtistQuestionScreen initiall ArtistQuestionScreen renders correctly 1`] = `
 <div
   id="game-artist"
 >
@@ -94,12 +94,16 @@ exports[`ArtistQuestionScreen initial ArtistQuestionScreen renders correctly 1`]
         >
           <button
             className="track__button track__button--play"
+            disabled={false}
+            onClick={[Function]}
             type="button"
           />
           <div
             className="track__status"
           >
-            <audio />
+            <audio
+              src="https://upload.wikimedia.org/wikipedia/en/transcoded/2/2a/Queen_-_News_Of_The_World_-_We_Will_Rock_You.ogg/Queen_-_News_Of_The_World_-_We_Will_Rock_You.ogg.mp3"
+            />
           </div>
         </div>
       </div>
@@ -114,7 +118,7 @@ exports[`ArtistQuestionScreen initial ArtistQuestionScreen renders correctly 1`]
             className="artist__input visually-hidden"
             defaultValue="answer-0"
             id="answer-0"
-            name="undefined-0"
+            name="artist-0"
             onChange={[MockFunction]}
             type="radio"
           />
@@ -137,7 +141,7 @@ exports[`ArtistQuestionScreen initial ArtistQuestionScreen renders correctly 1`]
             className="artist__input visually-hidden"
             defaultValue="answer-1"
             id="answer-1"
-            name="undefined-0"
+            name="artist-0"
             onChange={[MockFunction]}
             type="radio"
           />
@@ -160,7 +164,7 @@ exports[`ArtistQuestionScreen initial ArtistQuestionScreen renders correctly 1`]
             className="artist__input visually-hidden"
             defaultValue="answer-2"
             id="answer-2"
-            name="undefined-0"
+            name="artist-0"
             onChange={[MockFunction]}
             type="radio"
           />

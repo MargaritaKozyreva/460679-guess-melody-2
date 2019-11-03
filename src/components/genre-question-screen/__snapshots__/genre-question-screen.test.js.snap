@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GenreQuestionScreen initial GenreQuestionScreen renders correctly 1`] = `
+exports[`GenreQuestionScreen initiall GenreQuestionScreen renders correctly 1`] = `
 <section
   className="game game--genre"
 >
@@ -73,12 +73,16 @@ exports[`GenreQuestionScreen initial GenreQuestionScreen renders correctly 1`] =
       >
         <button
           className="track__button track__button--play"
+          disabled={false}
+          onClick={[Function]}
           type="button"
         />
         <div
           className="track__status"
         >
-          <audio />
+          <audio
+            src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg"
+          />
         </div>
         <div
           className="game__answer"
@@ -104,12 +108,16 @@ exports[`GenreQuestionScreen initial GenreQuestionScreen renders correctly 1`] =
       >
         <button
           className="track__button track__button--play"
+          disabled={false}
+          onClick={[Function]}
           type="button"
         />
         <div
           className="track__status"
         >
-          <audio />
+          <audio
+            src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg"
+          />
         </div>
         <div
           className="game__answer"
@@ -135,12 +143,16 @@ exports[`GenreQuestionScreen initial GenreQuestionScreen renders correctly 1`] =
       >
         <button
           className="track__button track__button--play"
+          disabled={false}
+          onClick={[Function]}
           type="button"
         />
         <div
           className="track__status"
         >
-          <audio />
+          <audio
+            src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg"
+          />
         </div>
         <div
           className="game__answer"
@@ -166,12 +178,16 @@ exports[`GenreQuestionScreen initial GenreQuestionScreen renders correctly 1`] =
       >
         <button
           className="track__button track__button--play"
+          disabled={false}
+          onClick={[Function]}
           type="button"
         />
         <div
           className="track__status"
         >
-          <audio />
+          <audio
+            src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg"
+          />
         </div>
         <div
           className="game__answer"
